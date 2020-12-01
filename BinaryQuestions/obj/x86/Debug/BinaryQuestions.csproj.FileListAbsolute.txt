@@ -1,0 +1,11 @@
+C:\Users\Stefan\Desktop\PracticumBinaryTree\BinaryQuestions\BinaryQuestions\bin\Debug\BinaryQuestions.exe
+C:\Users\Stefan\Desktop\PracticumBinaryTree\BinaryQuestions\BinaryQuestions\bin\Debug\BinaryQuestions.pdb
+C:\Users\Stefan\Desktop\PracticumBinaryTree\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.csprojResolveAssemblyReference.cache
+C:\Users\Stefan\Desktop\PracticumBinaryTree\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.exe
+C:\Users\Stefan\Desktop\PracticumBinaryTree\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.pdb
+C:\workspace\BinaryQuestions\BinaryQuestions\bin\Debug\BinaryQuestions.exe
+C:\workspace\BinaryQuestions\BinaryQuestions\bin\Debug\BinaryQuestions.pdb
+C:\workspace\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.csprojAssemblyReference.cache
+C:\workspace\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.csproj.CoreCompileInputs.cache
+C:\workspace\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.exe
+C:\workspace\BinaryQuestions\BinaryQuestions\obj\x86\Debug\BinaryQuestions.pdb
