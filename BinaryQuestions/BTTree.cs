@@ -36,7 +36,7 @@ namespace BinaryQuestions
             }
         }
 
-        public void query()
+        public void Query()
         {
             rootNode.query(1);
 

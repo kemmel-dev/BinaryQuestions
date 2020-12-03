@@ -20,12 +20,12 @@ namespace BinaryQuestions
                 StartNewGame();
 
             Console.WriteLine("\nStarting the \"20 Binary Questions\" Game!\nThink of an object, person or animal.");
-            tree.query(); //play one game
+            tree.Query(); //play one game
             while(PlayAgain())
             {
                 Console.WriteLine("\nThink of an object, person or animal.");
                 Console.WriteLine();
-                tree.query(); //play one game
+                tree.Query(); //play one game
             }
         }
 
