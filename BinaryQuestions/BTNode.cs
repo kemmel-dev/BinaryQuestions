@@ -107,7 +107,7 @@ namespace BinaryQuestions
             message = nodeMessage;
         }
 
-        public string getMessage()
+        public string GetMessage()
         {
             return message;
         }
@@ -117,7 +117,7 @@ namespace BinaryQuestions
             noNode = node;
         }
 
-        public BTNode getNoNode()
+        public BTNode GetNoNode()
         {
             return noNode;
         }
@@ -127,7 +127,7 @@ namespace BinaryQuestions
             yesNode = node;
         }
 
-        public BTNode getYesNode()
+        public BTNode GetYesNode()
         {
             return yesNode;
         }

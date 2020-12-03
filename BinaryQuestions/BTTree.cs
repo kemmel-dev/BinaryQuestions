@@ -22,6 +22,11 @@ namespace BinaryQuestions
             this.saveQuestionTree();
         }
 
+        public BTNode GetRootNode()
+        {
+            return rootNode;
+        }
+
         public BTTree()
         {
             IFormatter formatter = new BinaryFormatter();

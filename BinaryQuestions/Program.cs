@@ -29,6 +29,47 @@ namespace BinaryQuestions
             }
         }
 
+        static int Evaluate(BTNode node)
+        {
+            string message = node.GetMessage();
+            if (message != null)
+            {
+                return message.Length;
+            }
+            throw new ArgumentException("Tried to evaluate a null string");
+        }
+
+        static void TraversePreOrder(BTNode rootNode)
+        {
+            if (rootNode != null)
+            {
+                Console.WriteLine(rootNode.GetMessage());
+                Console.WriteLine(Evaluate(rootNode));
+                TraversePreOrder(rootNode.GetNoNode());
+                TraversePreOrder(rootNode.GetYesNode());
+            }
+        }
+
+        static void TraverseInOrder(BTNode rootNode)
+        {
+            if (rootNode != null)
+            {
+                TraverseInOrder(rootNode.GetNoNode());
+                Console.WriteLine(rootNode.GetMessage());
+                TraverseInOrder(rootNode.GetYesNode());
+            }
+        }
+
+        static void TraversePostOrder(BTNode rootNode)
+        {
+            if (rootNode != null)
+            {
+                TraversePostOrder(rootNode.GetNoNode());
+                TraversePostOrder(rootNode.GetYesNode());
+                Console.WriteLine(rootNode.GetMessage());
+            }
+        }
+
         static bool playAgain()
         {
             Console.Write("\nPlay Another Game? ");
