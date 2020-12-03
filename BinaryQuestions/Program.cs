@@ -17,11 +17,11 @@ namespace BinaryQuestions
             if (File.Exists("serialized.bin"))
                 tree = new BTTree();
             else
-                startNewGame();
+                StartNewGame();
 
             Console.WriteLine("\nStarting the \"20 Binary Questions\" Game!\nThink of an object, person or animal.");
             tree.query(); //play one game
-            while(playAgain())
+            while(PlayAgain())
             {
                 Console.WriteLine("\nThink of an object, person or animal.");
                 Console.WriteLine();
@@ -70,7 +70,7 @@ namespace BinaryQuestions
             }
         }
 
-        static bool playAgain()
+        static bool PlayAgain()
         {
             Console.Write("\nPlay Another Game? ");
             char inputCharacter = Console.ReadLine().ElementAt(0);
@@ -87,7 +87,7 @@ namespace BinaryQuestions
                 return false;
         }
 
-        static void startNewGame()
+        static void StartNewGame()
         {
             Console.WriteLine("No previous knowledge found!");
             Console.WriteLine("Initializing a new game.\n");
