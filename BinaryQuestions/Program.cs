@@ -13,7 +13,9 @@ namespace BinaryQuestions
     {
         static BTTree tree;
 
-        private static List<BTNode> leafs = new List<BTNode>(); 
+        private static List<BTNode> leafs = new List<BTNode>();
+
+        static int calls;
 
         static void Main(string[] args)
         {
@@ -23,9 +25,12 @@ namespace BinaryQuestions
             else
                 StartNewGame();
 
-            Console.WriteLine("Output Minimax maximized: " + MiniMax(tree.GetRootNode(), true));
+            Console.WriteLine("Output Minimax maximized: " + MiniMax(tree.GetRootNode(), true) + " (with " + calls + " calls)");
+            calls = 0;
+            Console.WriteLine("Output Minimax + AB Pruning maximized: " + MiniMaxABPruning(tree.GetRootNode(), true, int.MinValue, int.MaxValue) + " (with " + calls + " calls)");
 
-            foreach(BTNode node in leafs)
+
+            foreach (BTNode node in leafs)
             {
                 Console.WriteLine(node.GetMessage());
             }
@@ -42,6 +47,7 @@ namespace BinaryQuestions
 
         static int MiniMax(BTNode rootNode, bool isMax)
         {
+            calls++;
             if (!rootNode.IsQuestion())
             {
                 return Evaluate(rootNode);
@@ -57,9 +63,55 @@ namespace BinaryQuestions
             }
         }
 
+    static int MiniMaxABPruning(BTNode rootNode, bool isMax, int alpha, int beta)
+    {
+        calls++;
+        if (!rootNode.IsQuestion())
+        {
+            return Evaluate(rootNode);
+        }
 
-        // ben ik leaf? --> return
-        // ben ik min/max
+        BTNode[] children = new BTNode[2];
+        children[0] = rootNode.GetNoNode();
+        children[1] = rootNode.GetYesNode();
+
+        if (isMax)
+        {
+            int bestValue = int.MinValue;
+            int value;
+
+            foreach (BTNode child in children)
+            {
+                value = MiniMaxABPruning(child, false, alpha, beta);
+                bestValue = Math.Max(bestValue, value);
+                alpha = Math.Max(alpha, bestValue);
+
+                if (beta <= alpha)
+                {
+                    break;
+                }
+            }
+            return bestValue;
+        }
+        else
+        {
+            int bestValue = int.MaxValue;
+            int value;
+
+            foreach (BTNode child in children)
+            {
+                value = MiniMaxABPruning(child, true, alpha, beta);
+                bestValue = Math.Min(bestValue, value);
+                beta = Math.Min(beta, bestValue);
+
+                if (beta <= alpha)
+                {
+                    break;
+                }
+            }
+            return bestValue;
+        }
+    }
 
 
         struct Maximum
