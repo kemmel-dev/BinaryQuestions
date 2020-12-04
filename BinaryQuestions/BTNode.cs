@@ -29,7 +29,7 @@ namespace BinaryQuestions
             {
                 Console.WriteLine("That was the last question. You win!");
             }
-            else if (this.isQuestion())
+            else if (this.IsQuestion())
             {
                 Console.WriteLine(q + ") " + this.message);
                 Console.Write("Enter 'y' for yes and 'n' for no: ");
@@ -78,7 +78,7 @@ namespace BinaryQuestions
             this.setMessage(userQuestion);
         }
 
-        public bool isQuestion()
+        public bool IsQuestion()
         {
             if (noNode == null && yesNode == null)
                 return false;

@@ -5,12 +5,16 @@ using System.Text;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.ComponentModel;
 
 namespace BinaryQuestions
 {
     class Program
     {
         static BTTree tree;
+
+        private static List<BTNode> leafs = new List<BTNode>(); 
+
         static void Main(string[] args)
         {
             //There's no need to ask for the initial data when it already exists
@@ -18,6 +22,13 @@ namespace BinaryQuestions
                 tree = new BTTree();
             else
                 StartNewGame();
+
+            Console.WriteLine("Output Minimax maximized: " + MiniMax(tree.GetRootNode(), true));
+
+            foreach(BTNode node in leafs)
+            {
+                Console.WriteLine(node.GetMessage());
+            }
 
             Console.WriteLine("\nStarting the \"20 Binary Questions\" Game!\nThink of an object, person or animal.");
             tree.Query(); //play one game
@@ -27,6 +38,56 @@ namespace BinaryQuestions
                 Console.WriteLine();
                 tree.Query(); //play one game
             }
+        }
+
+        static int MiniMax(BTNode rootNode, bool isMax)
+        {
+            if (!rootNode.IsQuestion())
+            {
+                return Evaluate(rootNode);
+            }
+
+            if (isMax)
+            {
+                return Math.Max(MiniMax(rootNode.GetNoNode(), false), MiniMax(rootNode.GetYesNode(), false));
+            }
+            else
+            {
+                return Math.Min(MiniMax(rootNode.GetNoNode(), true), MiniMax(rootNode.GetYesNode(), true));
+            }
+        }
+
+
+        // ben ik leaf? --> return
+        // ben ik min/max
+
+
+        struct Maximum
+        {
+            public Maximum(bool exists, BTNode node)
+            {
+                Exists = exists;
+                Node = node;
+            }
+
+            public bool Exists { get; }
+            public BTNode Node { get; }
+        }
+
+        static Maximum GetMaxNode(BTNode node1, BTNode node2)
+        {
+            int value1 = Evaluate(node1);
+            int value2 = Evaluate(node2);
+
+            if (value1 > value2)
+            {
+                return new Maximum(true, node1);
+            }
+            else if (value1 < value2)
+            {
+                return new Maximum(true, node2);
+            }
+            return new Maximum(false, null);
         }
 
         static int Evaluate(BTNode node)
@@ -39,12 +100,24 @@ namespace BinaryQuestions
             throw new ArgumentException("Tried to evaluate a null string");
         }
 
+        static void GetLeafs(BTNode rootNode)
+        {
+            if (rootNode != null)
+            {
+                if (! rootNode.IsQuestion())
+                {
+                    leafs.Add(rootNode);
+                }
+                GetLeafs(rootNode.GetNoNode());
+                GetLeafs(rootNode.GetYesNode());
+            }
+        }
+
         static void TraversePreOrder(BTNode rootNode)
         {
             if (rootNode != null)
             {
                 Console.WriteLine(rootNode.GetMessage());
-                Console.WriteLine(Evaluate(rootNode));
                 TraversePreOrder(rootNode.GetNoNode());
                 TraversePreOrder(rootNode.GetYesNode());
             }
